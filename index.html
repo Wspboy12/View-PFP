@@ -4,34 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View ProfilePicture</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.5s ease forwards;
+        }
+        h1 {
+            color: #00bcd4;
+            margin-bottom: 20px;
+            font-size: 28px;
+            animation: fadeIn 1s ease forwards;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            animation: fadeIn 1s ease forwards;
+        }
+        input[type="text"], select, button {
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            margin-bottom: 10px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        input[type="text"]:focus, select:focus, button:focus {
+            outline: none;
+            background-color: #555;
+        }
+        select {
+            width: 100%;
+        }
+        button {
+            cursor: pointer;
+            background-color: #00bcd4;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #008ba3;
+        }
+        #avatarContainer {
+            margin-top: 20px;
+            animation: fadeIn 1s ease forwards;
+        }
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>User Avatar Viewer</h1>
-    
-    <div>
-        <label for="userId">Enter User ID:</label>
-        <input type="text" id="userId" name="userId">
-        <button onclick="getUserAvatar()">Get Avatar</button>
+    <div class="container">
+        <h1>User Avatar Viewer</h1>
+        
+        <div>
+            <label for="userId">Enter User ID:</label>
+            <input type="text" id="userId" name="userId">
+            <select id="imageSize">
+                <option value="normal">Normal Image</option>
+                <option value="small">Small Image</option>
+                <option value="big">Big Image</option>
+            </select>
+            <button onclick="getUserAvatar()">Get Avatar</button>
+        </div>
+
+        <div id="avatarContainer">
+        </div>
     </div>
 
-    <div id="avatarContainer">
-    </div>
+    <script>
+        async function getUserAvatar() {
+            const userId = document.getElementById('userId').value;
+            const imageSize = document.getElementById('imageSize').value;
+            let imageUrl = '';
 
-  <script>
-      async function getUserAvatar() {
-          const userId = document.getElementById('userId').value;
-          const response = await fetch(`https://avatar-cyan.vercel.app/api/pfp/${userId}/image`);
-          if (response.ok) {
-              const imageUrl = response.url; 
-              const avatarImg = document.createElement('img');
-              avatarImg.src = imageUrl;
-              document.getElementById('avatarContainer').innerHTML = '';
-              document.getElementById('avatarContainer').appendChild(avatarImg);
-          } else {
-              document.getElementById('avatarContainer').innerHTML = '<p>User avatar not found.</p>';
-          }
-      }
-  </script>
+            if (imageSize === 'normal') {
+                imageUrl = `https://avatar-cyan.vercel.app/api/pfp/${userId}/image`;
+            } else if (imageSize === 'small') {
+                imageUrl = `https://avatar-cyan.vercel.app/api/pfp/${userId}/smallimage`;
+            } else if (imageSize === 'big') {
+                imageUrl = `1019333831792279602/bigimage`;
+            }
 
+            const response = await fetch(imageUrl);
+            if (response.ok) {
+                const avatarImg = document.createElement('img');
+                avatarImg.src = response.url; 
+                document.getElementById('avatarContainer').innerHTML = '';
+                document.getElementById('avatarContainer').appendChild(avatarImg);
+            } else {
+                document.getElementById('avatarContainer').innerHTML = '<p>User avatar not found.</p>';
+            }
+        }
+    </script>
 </body>
 </html>

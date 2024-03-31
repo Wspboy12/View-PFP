@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View ProfilePicture</title>
+    <title>View Profile Picture</title>
     <style>
         body {
             background-color: #222;
@@ -64,6 +64,11 @@
         #avatarContainer {
             margin-top: 20px;
             animation: fadeIn 1s ease forwards;
+            max-height: 300px; /* Set max height for the container */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        #avatarContainer img {
+            max-width: 100%; /* Ensure the image fits within the container */
         }
         @keyframes slideIn {
             0% {

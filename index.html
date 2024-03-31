@@ -64,11 +64,12 @@
         #avatarContainer {
             margin-top: 20px;
             animation: fadeIn 1s ease forwards;
-            max-height: 300px; /* Set max height for the container */
-            overflow-y: auto; /* Enable vertical scrolling */
+            max-width: 100%; /* Added to ensure image doesn't overflow container */
+            overflow: auto; /* Added to enable scrolling for large images */
         }
-        #avatarContainer img {
-            max-width: 100%; /* Ensure the image fits within the container */
+        img {
+            display: block; /* Ensure image is displayed as a block element */
+            max-width: 100%; /* Ensure image doesn't overflow its container */
         }
         @keyframes slideIn {
             0% {

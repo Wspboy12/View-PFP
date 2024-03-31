@@ -5,91 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Profile Picture</title>
     <style>
-        body {
-            background-color: #222;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
+    body {
+        background-color: #222;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+    }
+    .container {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        animation: slideIn 0.5s ease forwards;
+        max-height: 80vh; /* Set maximum height */
+        overflow-y: auto; /* Make container scrollable */
+    }
+    h1 {
+        color: #00bcd4;
+        margin-bottom: 20px;
+        font-size: 28px;
+        animation: fadeIn 1s ease forwards;
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+        animation: fadeIn 1s ease forwards;
+    }
+    input[type="text"], select, button {
+        padding: 10px;
+        border-radius: 4px;
+        border: none;
+        margin-bottom: 10px;
+        font-size: 16px;
+        background-color: #333;
+        color: #fff;
+        transition: background-color 0.3s;
+    }
+    input[type="text"]:focus, select:focus, button:focus {
+        outline: none;
+        background-color: #555;
+    }
+    select {
+        width: 100%;
+    }
+    button {
+        cursor: pointer;
+        background-color: #00bcd4;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #008ba3;
+    }
+    #avatarContainer {
+        margin-top: 20px;
+        animation: fadeIn 1s ease forwards;
+    }
+    #avatarContainer img {
+        max-width: 100%; /* Ensure image does not overflow container */
+    }
+    @keyframes slideIn {
+        0% {
+            transform: translateY(-50px);
+            opacity: 0;
         }
-        .container {
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            animation: slideIn 0.5s ease forwards;
+        100% {
+            transform: translateY(0);
+            opacity: 1;
         }
-        h1 {
-            color: #00bcd4;
-            margin-bottom: 20px;
-            font-size: 28px;
-            animation: fadeIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
         }
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 18px;
-            animation: fadeIn 1s ease forwards;
+        100% {
+            opacity: 1;
         }
-        input[type="text"], select, button {
-            padding: 10px;
-            border-radius: 4px;
-            border: none;
-            margin-bottom: 10px;
-            font-size: 16px;
-            background-color: #333;
-            color: #fff;
-            transition: background-color 0.3s;
-        }
-        input[type="text"]:focus, select:focus, button:focus {
-            outline: none;
-            background-color: #555;
-        }
-        select {
-            width: 100%;
-        }
-        button {
-            cursor: pointer;
-            background-color: #00bcd4;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #008ba3;
-        }
-        #avatarContainer {
-            margin-top: 20px;
-            animation: fadeIn 1s ease forwards;
-            max-width: 100%; /* Added to ensure image doesn't overflow container */
-            overflow: auto; /* Added to enable scrolling for large images */
-        }
-        img {
-            display: block; /* Ensure image is displayed as a block element */
-            max-width: 100%; /* Ensure image doesn't overflow its container */
-        }
-        @keyframes slideIn {
-            0% {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-    </style>
+    }
+</style>
+
 </head>
 <body>
     <div class="container">
